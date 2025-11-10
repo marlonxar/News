@@ -1,0 +1,97 @@
+<div class="news-detail-container" *ngIf="!loading && article">
+
+  <div class="news-header">
+
+    <!-- Main image -->
+    <div class="news-image">
+      <img 
+        [src]="article.image || 'https://via.placeholder.com/1200x600?text=Image+not+available'" 
+        alt="{{ article.title }}"
+      />
+    </div>
+
+    <!-- Title and information -->
+    <div class="news-meta">
+
+      <!-- Category corrected -->
+      <span class="category">
+        {{ 
+          article.category === 'ERROR_GENERATING_OUTPUT' || !article.category 
+            ? 'General' 
+            : article.category 
+        }}
+      </span>
+
+      <h1 class="news-title">{{ article.title }}</h1>
+
+      <div class="news-info">
+        <span class="date">{{ article.created_at | date:'mediumDate' }}</span>
+        <span class="separator">•</span>
+
+        <!-- Tags corrected -->
+        <span class="tags">
+          Tags: 
+          {{ 
+            article.tags === 'ERROR_GENERATING_OUTPUT' || !article.tags 
+              ? 'General' 
+              : article.tags 
+          }}
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="news-content" [innerHTML]="article.content"></div>
+
+  <hr class="divider">
+
+  <!-- Share -->
+  <div class="share-section">
+    <p>Share:</p>
+    <div class="share-icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-x-twitter"></i>
+      <i class="fa-brands fa-whatsapp"></i>
+      <i class="fa-brands fa-linkedin-in"></i>
+
+      <button class="copy-btn" (click)="copyLink()">
+        Copy link
+      </button>
+    </div>
+  </div>
+
+  <!-- Copy notification -->
+  <div class="copy-notification" *ngIf="linkCopied">
+    ✅ Link copied to clipboard!
+  </div>
+
+  <hr class="divider">
+
+  <!-- Recent articles -->
+  <div class="recent-articles" *ngIf="recentArticles.length">
+    <h2>Recent Articles</h2>
+
+    <div class="recent-list">
+      <div 
+        class="recent-item" 
+        *ngFor="let item of recentArticles"
+        (click)="goToNews(item.slug)"
+      >
+        <img 
+          [src]="item.image || 'https://via.placeholder.com/120x80?text=No+Image'"
+          alt="{{ item.title }}"
+        >
+        <div class="recent-content">
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.created_at | date:'shortDate' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="loading" class="loading">Loading news...</div>
+<div *ngIf="error" class="error">{{ error }}</div>

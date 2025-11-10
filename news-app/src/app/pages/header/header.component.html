@@ -1,0 +1,37 @@
+<header class="main-header">
+    <div class="top-bar">
+      <div class="date-display">
+        {{ currentDate | date: 'fullDate' }} 
+      </div>
+      
+      <div class="language-selector">
+        <select 
+          [ngModel]="selectedLanguage" 
+          (ngModelChange)="onLanguageChange($event)"
+          class="language-dropdown"
+        >
+          <option *ngFor="let lang of languages" [value]="lang">
+            {{ lang }}
+          </option>
+        </select>
+      </div>
+    </div>
+  
+    <hr class="separator top-separator"> 
+  
+    <div class="header-middle">
+      <div class="logo">
+        <a href="/" class="logo-link">FastNews</a>
+      </div>
+    </div>
+  
+    <hr class="separator bottom-separator">
+  
+    <nav class="categories-nav">
+      <ul class="categories-list">
+        <li *ngFor="let category of categories">
+          <a href="#" class="category-link">{{ category }}</a>
+        </li>
+      </ul>
+    </nav>
+  </header>

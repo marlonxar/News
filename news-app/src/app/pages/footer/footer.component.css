@@ -1,0 +1,111 @@
+/* Contenedor general */
+.footer {
+    background-color: #f7f8f9;
+    padding: 50px 0 0 0;
+    font-family: 'Inter', sans-serif;
+    color: #0b1c2a;
+}
+
+/* Contenido principal centrado */
+.footer-inner {
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 60px; /* columnas un poco más juntas */
+    align-items: flex-start;
+}
+
+/* Logo */
+.footer-logo {
+    font-size: 24px;
+    font-weight: 400;
+    color: #0b1c2a;
+    margin-bottom: 15px;
+}
+
+/* Columnas */
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* menos espacio entre opciones */
+    font-size: 14px; /* letras más pequeñas */
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.footer-column a {
+    color: #0b1c2a;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: #666666; /* opcional: efecto hover */
+}
+
+/* Línea divisoria */
+.footer-divider {
+    border-left: 1px solid #c9c9c9;
+    height: 100px;
+    margin: 0 20px;
+}
+
+/* Iconos de redes */
+.footer-social {
+    margin-top: 40px;
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+}
+
+.footer-social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: fill 0.3s;
+}
+
+.footer-social-icon svg {
+    fill: #333333; /* gris oscuro permanente */
+    width: 18px;
+    height: 18px;
+    transition: fill 0.3s;
+}
+
+.footer-social-icon:hover svg {
+    fill: #666666; /* se aclara un poco al pasar el mouse */
+}
+
+/* Banda inferior */
+.footer-bottom {
+    margin-top: 40px;
+    background-color: #ffffff;
+    padding: 20px 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-bottom-inner {
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #707070;
+}
+
+/* Powered by */
+.footer-powered {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400;
+}

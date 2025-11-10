@@ -1,0 +1,159 @@
+/* --- Variables CSS para colores --- */
+:root {
+    --primary-color: #007bff; /* Azul brillante para enlaces/hover */
+    --secondary-color: #6c757d; /* Gris oscuro para texto secundario */
+    --light-bg-color: #f8f9fa; /* Fondo muy claro */
+    --dark-text-color: #343a40; /* Texto oscuro principal */
+    --border-color: #e9ecef; /* Color de borde suave */
+    --font-family-sans: 'Arial', sans-serif;
+    --font-family-serif: 'Georgia', serif; /* Para el logo quizás */
+  }
+  
+  /* --- Contenedor Principal --- */
+  .main-header {
+    background-color: var(--light-bg-color);
+    color: var(--dark-text-color);
+    padding: 15px 5%; /* Más padding vertical */
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--font-family-sans);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sutil sombra para profundidad */
+  }
+  
+  /* --- Barra Superior (Fecha e Idioma) --- */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Margen debajo de la barra superior */
+  }
+  
+  .date-display {
+    font-size: 0.85em;
+    color: var(--secondary-color);
+  }
+  
+  .language-selector {
+    position: relative; /* Para posicionar el icono del dropdown */
+  }
+  
+  .language-dropdown {
+    appearance: none; /* Elimina estilos nativos del select */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px 30px 8px 15px; /* Más padding para el texto y espacio para el icono */
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: white;
+    color: var(--dark-text-color);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    min-width: 120px; /* Ancho mínimo para el dropdown */
+  }
+  
+  .language-dropdown:hover {
+    border-color: var(--primary-color);
+  }
+  
+  .language-dropdown:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Efecto focus */
+  }
+  
+  /* Icono personalizado para el dropdown */
+  .language-selector::after {
+    content: '▼'; /* Flecha hacia abajo */
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Asegura que la flecha no intercepte clics */
+    color: var(--secondary-color);
+    font-size: 0.7em;
+  }
+  
+  /* --- Separadores --- */
+  .separator {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 15px 0; /* Margen para los separadores */
+  }
+  
+  .top-separator {
+    margin-top: 5px; /* Ajuste específico para el separador superior */
+  }
+  
+  .bottom-separator {
+    margin-bottom: 20px; /* Ajuste específico para el separador inferior */
+  }
+  
+  
+  /* --- Sección Media (Logo) --- */
+  .header-middle {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;
+    margin: 20px 0; /* Margen para separar del resto */
+  }
+  
+  .logo .logo-link {
+    font-family: var(--font-family-serif); /* Fuente tipo Serif para el logo */
+    font-size: 3em; /* Tamaño grande para el logo */
+    font-weight: bold;
+    color: var(--dark-text-color);
+    text-decoration: none;
+    letter-spacing: -1.5px; /* Ajuste de espaciado entre letras */
+    transition: color 0.3s ease;
+  }
+  
+  .logo .logo-link:hover {
+    color: var(--primary-color);
+  }
+  
+  /* --- Barra de Categorías --- */
+  .categories-nav {
+    display: flex; /* Para centrar la lista */
+    justify-content: center; /* Centra las categorías */
+    margin-top: 15px; /* Espacio encima de las categorías */
+  }
+  
+  .categories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; /* Más espacio entre categorías */
+  }
+  
+  .category-link {
+    text-decoration: none;
+    color: var(--dark-text-color);
+    font-weight: 600; /* Un poco más de peso a la fuente */
+    font-size: 0.95em;
+    text-transform: uppercase;
+    padding: 5px 0;
+    position: relative; /* Para el efecto de subrayado */
+    transition: color 0.3s ease;
+  }
+  
+  .category-link:hover {
+    color: var(--primary-color);
+  }
+  
+  /* Efecto de subrayado al pasar el ratón */
+  .category-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+  }
+  
+  .category-link:hover::after {
+    width: 100%;
+  }
