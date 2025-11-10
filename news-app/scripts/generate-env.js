@@ -9,4 +9,4 @@ export const environment = {
 `;
 
 fs.writeFileSync('src/environments/environment.prod.ts', content);
-console.log('environment.prod.ts generated!');
+console.log('✅ environment.prod.ts generated!');
