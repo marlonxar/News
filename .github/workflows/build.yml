@@ -23,5 +23,9 @@ jobs:
 
       - name: Build with environment
         run: |
-          echo "export const environment = { production: true, supabaseUrl: 'https://qlszvlsozsdzssnqkaop.supabase.co', supabaseKey: '${{ secrets.SUPABASE_KEY }}' };" > src/environments/environment.prod.ts
-          npm run build -- --configuration production
+            echo "export const environment = {
+                production: true,
+                supabaseUrl: 'https://qlszvlsozsdzssnqkaop.supabase.co',
+                supabaseKey: '${{ secrets.SUPABASE_KEY }}'
+            };" > src/environments/environment.prod.ts
+            npm run build -- --configuration production
