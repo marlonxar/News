@@ -1,30 +1,33 @@
+<!-- Loading / Error States -->
 <div *ngIf="loading" class="loading-state">Loading news...</div>
 <div *ngIf="error" class="error-state">{{ error }}</div>
 
-<section class="main-news-grid" *ngIf="!loading && lastNews.length">
+<!-- Main News Grid -->
+<section class="main-news-grid" *ngIf="!loading && featuredNews.length">
+  <!-- Featured Article (Primera noticia grande) -->
   <div class="featured-article" 
-       [style.background-image]="'url(' + (lastNews[0]?.image || 'https://via.placeholder.com/1000x600') + ')'"
-       (click)="goToNews(lastNews[0]?.slug)">
+       [style.background-image]="'url(' + (featuredNews[0]?.image || 'https://via.placeholder.com/1000x600') + ')'"
+       (click)="goToNews(featuredNews[0]?.slug)">
     <div class="overlay">
       <span class="category-tag">
         {{ 
-          lastNews[0]?.category === 'ERROR_GENERATING_OUTPUT' 
+          featuredNews[0]?.category === 'ERROR_GENERATING_OUTPUT' 
           ? 'General' 
-          : (lastNews[0]?.category || 'General') 
+          : (featuredNews[0]?.category || 'General') 
         }}
       </span>
-      <h2>{{ lastNews[0]?.title }}</h2>
-      <p class="description">{{ lastNews[0]?.content | slice:0:150 }}...</p>
+      <h2>{{ featuredNews[0]?.title }}</h2>
+      <p class="description">{{ featuredNews[0]?.content | stripHtml | slice:0:150 }}...</p>
       
       <div class="date-info">
-        <span>{{ lastNews[0]?.created_at | date: 'mediumDate' }}</span>
+        <span>{{ featuredNews[0]?.created_at | date: 'mediumDate' }}</span>
       </div>
-      
     </div>
   </div>
 
+  <!-- Side News List (Siguientes 4 noticias grandes) -->
   <div class="side-news-list">
-    <article class="side-news-item" *ngFor="let news of lastNews.slice(1, 5)" (click)="goToNews(news.slug)">
+    <article class="side-news-item" *ngFor="let news of featuredNews.slice(1, 5)" (click)="goToNews(news.slug)">
       <img [src]="news.image || 'https://via.placeholder.com/100x70'" alt="{{ news.title }}">
       <div>
         <h3>{{ news.title }}</h3>
@@ -36,14 +39,16 @@
 
 <hr class="section-separator">
 
-<section class="additional-news-section" *ngIf="!loading && popularNews.length">
-  <h2>More Featured News</h2>
+<!-- Additional News Section (Noticias restantes 10) -->
+<section class="additional-news-section" *ngIf="!loading && additionalNews.length">
+  <h2>More News</h2>
   <div class="additional-news-grid">
-    <article class="news-list-item" *ngFor="let news of popularNews" (click)="goToNews(news.slug)">
+    <article class="news-list-item" *ngFor="let news of additionalNews" (click)="goToNews(news.slug)">
       <img [src]="news.image || 'https://via.placeholder.com/200x120'" alt="{{ news.title }}">
       <div>
         <h4>{{ news.title }}</h4>
-        <p>{{ news.description | slice:0:100 }}...</p>
+        <p>{{ news.content | stripHtml | slice:0:100 }}...</p>
+        <span class="timestamp">{{ news.created_at | date:'mediumDate' }}</span>
       </div>
     </article>
   </div>

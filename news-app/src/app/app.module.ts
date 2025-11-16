@@ -7,6 +7,7 @@ import { NewsDetailComponent } from './pages/news-detail/news-detail.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { StripHtmlPipe } from './pipes/StripHtmlPipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     NewsDetailComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    StripHtmlPipe
   ],
   imports: [
     BrowserModule,

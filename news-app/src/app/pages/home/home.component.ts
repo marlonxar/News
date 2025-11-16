@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  lastNews: any[] = [];
-  popularNews: any[] = [];
+  featuredNews: any[] = [];
+  additionalNews: any[] = [];
   loading = true;
   error: string | null = null;
 
@@ -19,15 +19,14 @@ export class HomeComponent implements OnInit {
     try {
       const news = await this.newsService.getNews();
 
-      // Ordena por fecha (últimas noticias)
-      this.lastNews = news
-        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
-        .slice(0, 5); // últimas 5 noticias
+      // Filtrar solo noticias publicadas
+      const publishedNews = news
+        .filter(n => n.status === 'PUBLISHED')
+        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
-      // Ordena por visitas o popularidad
-      this.popularNews = news
-        .sort((a, b) => b.views - a.views)
-        .slice(0, 5); // top 5 más populares
+      // Separar primeras 5 como featured y siguientes 10 como additional
+      this.featuredNews = publishedNews.slice(0, 5);
+      this.additionalNews = publishedNews.slice(5, 15);
 
     } catch (err: any) {
       this.error = err.message || 'Error fetching news';

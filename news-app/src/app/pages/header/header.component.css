@@ -6,17 +6,17 @@
     --dark-text-color: #343a40; /* Texto oscuro principal */
     --border-color: #e9ecef; /* Color de borde suave */
     --font-family-sans: 'Arial', sans-serif;
-    --font-family-serif: 'Georgia', serif; /* Para el logo quizás */
+    --font-family-serif: 'Georgia', serif; /* Para el logo */
   }
   
   /* --- Contenedor Principal --- */
   .main-header {
     background-color: var(--light-bg-color);
     color: var(--dark-text-color);
-    padding: 15px 5%; /* Más padding vertical */
+    padding: 15px 5%;
     border-bottom: 1px solid var(--border-color);
     font-family: var(--font-family-sans);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sutil sombra para profundidad */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
   
   /* --- Barra Superior (Fecha e Idioma) --- */
@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px; /* Margen debajo de la barra superior */
+    margin-bottom: 10px;
   }
   
   .date-display {
@@ -33,14 +33,14 @@
   }
   
   .language-selector {
-    position: relative; /* Para posicionar el icono del dropdown */
+    position: relative;
   }
   
   .language-dropdown {
-    appearance: none; /* Elimina estilos nativos del select */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    padding: 8px 30px 8px 15px; /* Más padding para el texto y espacio para el icono */
+    padding: 8px 30px 8px 15px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
     background-color: white;
@@ -48,7 +48,7 @@
     font-size: 0.9em;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    min-width: 120px; /* Ancho mínimo para el dropdown */
+    min-width: 120px;
   }
   
   .language-dropdown:hover {
@@ -57,17 +57,16 @@
   
   .language-dropdown:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Efecto focus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
   }
   
-  /* Icono personalizado para el dropdown */
   .language-selector::after {
-    content: '▼'; /* Flecha hacia abajo */
+    content: '▼';
     position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; /* Asegura que la flecha no intercepte clics */
+    pointer-events: none;
     color: var(--secondary-color);
     font-size: 0.7em;
   }
@@ -77,33 +76,33 @@
     border: 0;
     height: 1px;
     background-color: var(--border-color);
-    margin: 15px 0; /* Margen para los separadores */
+    margin: 15px 0;
   }
   
   .top-separator {
-    margin-top: 5px; /* Ajuste específico para el separador superior */
+    margin-top: 5px;
   }
   
   .bottom-separator {
-    margin-bottom: 20px; /* Ajuste específico para el separador inferior */
+    margin-bottom: 20px;
   }
   
-  
-  /* --- Sección Media (Logo) --- */
+  /* --- Sección Media (Logo y Hamburger) --- */
   .header-middle {
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Logo centrado */
     align-items: center;
-    margin: 20px 0; /* Margen para separar del resto */
+    position: relative;
+    margin: 20px 0;
   }
   
   .logo .logo-link {
-    font-family: var(--font-family-serif); /* Fuente tipo Serif para el logo */
-    font-size: 3em; /* Tamaño grande para el logo */
+    font-family: var(--font-family-serif);
+    font-size: 3em;
     font-weight: bold;
     color: var(--dark-text-color);
     text-decoration: none;
-    letter-spacing: -1.5px; /* Ajuste de espaciado entre letras */
+    letter-spacing: -1.5px;
     transition: color 0.3s ease;
   }
   
@@ -111,11 +110,32 @@
     color: var(--primary-color);
   }
   
+  /* --- Hamburger Menu --- */
+  .hamburger {
+    display: none; /* oculto en desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .hamburger span {
+    display: block;
+    height: 3px;
+    background-color: #000000; /* negro */
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  
   /* --- Barra de Categorías --- */
   .categories-nav {
-    display: flex; /* Para centrar la lista */
-    justify-content: center; /* Centra las categorías */
-    margin-top: 15px; /* Espacio encima de las categorías */
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
   }
   
   .categories-list {
@@ -124,17 +144,17 @@
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 25px; /* Más espacio entre categorías */
+    gap: 25px;
   }
   
   .category-link {
     text-decoration: none;
     color: var(--dark-text-color);
-    font-weight: 600; /* Un poco más de peso a la fuente */
+    font-weight: 600;
     font-size: 0.95em;
     text-transform: uppercase;
     padding: 5px 0;
-    position: relative; /* Para el efecto de subrayado */
+    position: relative;
     transition: color 0.3s ease;
   }
   
@@ -142,7 +162,6 @@
     color: var(--primary-color);
   }
   
-  /* Efecto de subrayado al pasar el ratón */
   .category-link::after {
     content: '';
     position: absolute;
@@ -157,3 +176,29 @@
   .category-link:hover::after {
     width: 100%;
   }
+  
+  /* --- Responsive para móviles --- */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+  
+    .categories-nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+  
+    .categories-nav.open {
+      display: flex;
+    }
+  
+    .categories-list {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  

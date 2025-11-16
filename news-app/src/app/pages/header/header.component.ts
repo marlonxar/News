@@ -23,9 +23,15 @@ export class HeaderComponent implements OnInit {
     "Environment"
   ];
 
+  menuOpen = false;
+
   constructor() { }
 
   ngOnInit(): void { }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
   onLanguageChange(event: Event): void {
     this.selectedLanguage = (event.target as HTMLSelectElement).value;

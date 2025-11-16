@@ -1,12 +1,12 @@
 <header class="main-header">
     <div class="top-bar">
       <div class="date-display">
-        {{ currentDate | date: 'fullDate' }} 
+        {{ currentDate | date: 'fullDate' }}
       </div>
-      
+  
       <div class="language-selector">
-        <select 
-          [ngModel]="selectedLanguage" 
+        <select
+          [ngModel]="selectedLanguage"
           (ngModelChange)="onLanguageChange($event)"
           class="language-dropdown"
         >
@@ -17,17 +17,25 @@
       </div>
     </div>
   
-    <hr class="separator top-separator"> 
+    <hr class="separator top-separator">
   
     <div class="header-middle">
       <div class="logo">
         <a href="/" class="logo-link">FastNews</a>
       </div>
+  
+      <!-- Hamburger solo visible en móvil -->
+      <div class="hamburger" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   
     <hr class="separator bottom-separator">
   
-    <nav class="categories-nav">
+    <!-- Categorías -->
+    <nav class="categories-nav" [class.open]="menuOpen">
       <ul class="categories-list">
         <li *ngFor="let category of categories">
           <a href="#" class="category-link">{{ category }}</a>
@@ -35,3 +43,4 @@
       </ul>
     </nav>
   </header>
+  
